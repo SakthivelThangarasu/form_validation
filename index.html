@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Create Account</h2>
+        </div>
+        <form class="form" id="form">
+            <div class="form-control">
+                <label>Username</label>
+                <input type="text" placeholder="Username" id="username">
+                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Username Invalid</small>
+            </div>
+            <div class="form-control">
+                <label>Email</label>
+                <input type="email" placeholder="xxxxx@gmail.com" id="email">
+                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Email-id Invalid</small>
+            </div>
+            <div class="form-control">
+                <label>Password</label>
+                <input type="password" placeholder="Password" id="password">
+                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Password Invalid</small>
+                
+            </div>
+            <div class="form-control">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" id="confirmpassword">
+                <i class="fa-sharp fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Confirm Password Invalid</small>
+                <!-- <p id="messageDiv"></p> -->
+                <div id="message"></div>
+            </div>
+
+            <button>Submit</button>
+        </form>
+
+        <!-- <div id="message"></div> -->
+
+    </div>
+    <script>
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmpassword');
+        const messageDiv = document.getElementById('message');
+
+        passwordInput.addEventListener('input', validatePasswordMatch);
+        confirmPasswordInput.addEventListener('input', validatePasswordMatch);
+
+        function validatePasswordMatch() {
+            const password = passwordInput.value;
+            const passwordLength = password.length;
+            const confirmPassword = confirmPasswordInput.value;
+            const confirmPasswordLength = confirmPassword.length;
+
+           /*  console.log('password : ' + passwordLength)
+            console.log('password : ' + confirmPasswordLength) */
+            
+            if (passwordLength > 0 && confirmPasswordLength > 0) {
+
+                if (password === confirmPassword) {
+                    messageDiv.textContent = 'Passwords match!';
+                    messageDiv.style.color = 'green';
+
+                    console.log('password : ' + password)
+                } else {
+                    messageDiv.textContent = 'Passwords don\'t match.';
+                    messageDiv.style.color = 'red';
+
+                }
+
+            }else {
+                messageDiv.textContent = '';
+            }
+        }
+    </script>
+    <script src="response.js"></script>
+
+</body>
+
+</html>
